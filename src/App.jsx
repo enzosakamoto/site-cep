@@ -1,6 +1,8 @@
 import './App.css'
 import api from './services/api'
 import { useState } from 'react'
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   const [cep, setCEP] = useState('');
@@ -10,8 +12,8 @@ function App() {
 
   function handleRegister(event) {
     event.preventDefault();
-    if(!cep || cep.length != 8) {
-      alert("Digite um CEP válido!");
+    if(!cep) {
+      toast.warn("Digite um CEP válido!");
       return;
     }
     async function loadResult() {
@@ -20,8 +22,8 @@ function App() {
         setResult(response.data);
         setSucess(true);
         setErro(false);
-        console.log(response.data);
         if(response.data.erro) {
+          toast.warn("Erro ao carregar os dados do servidor!");
           setErro(true);
           setSucess(false);
         }
@@ -29,6 +31,7 @@ function App() {
       .catch(() => {
         setErro(true);
         setSucess(false);
+        toast.warn("Erro ao carregar os dados do servidor!");
         return;
       })
     }
@@ -37,9 +40,9 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Brasil CEP</h1>
+      <h1>BRASIL CEP</h1>
       <form onSubmit={handleRegister}>
-        <label className="texto-principal">Digite seu CEP</label>
+        <label className="texto-principal">Digite um CEP</label>
         <input
         className="texto"
         placeholder="Ex: 04849002"
@@ -79,14 +82,16 @@ function App() {
         <div>
           {
             erro ?
-            <div>
+            <div className="erro">
               <p className="texto-principal">Não foi possível carregar o CEP!</p>
+              <p className="texto-principal">Talvez tenha sido digitado errado ou ele não existe</p>
             </div>
             :
             <div></div>
           }
         </div>
       }
+      <ToastContainer autoClose={3000}/>
     </div>
   )
 }
