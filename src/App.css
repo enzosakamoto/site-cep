@@ -1,0 +1,62 @@
+.App {
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+}
+
+.App h1 {
+    font-size: 64px;
+}
+
+.App form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+}
+
+.App form input {
+    border: none;
+    border-bottom: 0.4px solid #000;
+}
+
+.App form button {
+    border: none;
+    background-color: #116fcb;
+    color: #FFF;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 30px;
+    transition: all 0.4s ease-in;
+}
+
+.App form button:hover {
+    background-color: #ff0000;
+}
+
+.resultado {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+}
+
+.container-texto {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+}
+
+.texto-principal {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.texto {
+    font-size: 30px;
+}
