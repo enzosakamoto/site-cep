@@ -1,7 +1,5 @@
 import axios from "axios";
 
-// https://viacep.com.br/ws/04549002/json/
-
 const api = axios.create({
     baseURL: "https://viacep.com.br/ws/"
 });
