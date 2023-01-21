@@ -40,57 +40,62 @@ function App() {
 
   return (
     <div className="App">
-      <h1>BRASIL CEP</h1>
-      <form onSubmit={handleRegister}>
-        <label className="texto-principal">Digite um CEP</label>
-        <input
-        className="texto"
-        placeholder="Ex: 04849002"
-        type="text"
-        onChange={(event) => setCEP(event.target.value)}/>
-        <button type='submit'>Enviar!</button>
-      </form>
-      {
-        sucess ?
-        <div id="resultado" className="resultado">
-          <div className="container-texto">
-            <p className="texto-principal">CEP:</p>
-            <p className="texto">{result.cep}</p>
+      <div className="container">
+        <h1>CONSULTOR DE CEP</h1>
+        <form onSubmit={handleRegister}>
+          <div className="form-group">
+            <input
+              type="text"
+              required
+              onChange={(event) => setCEP(event.target.value)}/>
+            <label>Digite um CEP - Ex: 04849002</label>
           </div>
-          <div className="container-texto">
-            <p className="texto-principal">Logradouro:</p>
-            <p className="texto">{result.logradouro}</p>
-          </div>
-          <div className="container-texto">
-            <p className="texto-principal">Complemento:</p>
-            <p className="texto">{result.complemento}</p>
-          </div>
-          <div className="container-texto">
-            <p className="texto-principal">Bairro:</p>
-            <p className="texto">{result.bairro}</p>
-          </div>
-          <div className="container-texto">
-            <p className="texto-principal">Localidade:</p>
-            <p className="texto">{result.localidade}</p>
-          </div>
-          <div className="container-texto">
-            <p className="texto-principal">UF:</p>
-            <p className="texto">{result.uf}</p>
-          </div>
-        </div>
-        :
-        <div>
-          {
-            erro ?
-            <div className="erro">
-              <p className="texto-principal">Não foi possível carregar o CEP!</p>
-              <p className="texto-principal">Talvez tenha sido digitado errado ou ele não existe</p>
+          <button className='btn' type='submit'>
+            <span>Enviar!</span>
+          </button>
+        </form>
+        {
+          sucess ?
+          <div id="resultado" className="resultado">
+            <div className="container-texto">
+              <p className="texto-principal">CEP:</p>
+              <p className="texto">{result.cep}</p>
             </div>
-            :
-            <div></div>
-          }
-        </div>
-      }
+            <div className="container-texto">
+              <p className="texto-principal">Logradouro:</p>
+              <p className="texto">{result.logradouro}</p>
+            </div>
+            <div className="container-texto">
+              <p className="texto-principal">Complemento:</p>
+              <p className="texto">{result.complemento}</p>
+            </div>
+            <div className="container-texto">
+              <p className="texto-principal">Bairro:</p>
+              <p className="texto">{result.bairro}</p>
+            </div>
+            <div className="container-texto">
+              <p className="texto-principal">Localidade:</p>
+              <p className="texto">{result.localidade}</p>
+            </div>
+            <div className="container-texto">
+              <p className="texto-principal">UF:</p>
+              <p className="texto">{result.uf}</p>
+            </div>
+          </div>
+          :
+          <div>
+            {
+              erro ?
+              <div className="erro">
+                <p className="texto-principal">Não foi possível carregar o CEP!</p>
+                <p className="texto-principal">Talvez tenha sido digitado errado ou ele não existe</p>
+              </div>
+              :
+              <div></div>
+            }
+          </div>
+        }
+      </div>
       <ToastContainer autoClose={3000}/>
     </div>
   )
